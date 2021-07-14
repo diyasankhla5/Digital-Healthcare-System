@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Profile</title>
+
+  
+  <meta charset="utf-8">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.0.1/tailwind.min.css'>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="{{ url_for('static', filename='jquery-3.4.1.min.js')}}"></script>
+  <link type="stylesheet" href="{{ url_for('static', filename='styles.css')}}"></link>
+  </head>
+<style>
+    body{
+        background-color: #EAEDF0;
+    }
+    .container{
+        background-color:white;
+        width:50%;
+        border: 1px solid lightgrey;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        
+        box-shadow: 2px 2px 2px 2px lightgray;
+
+
+    }
+    .center{
+        text-align: center;
+        width:100%;
+    }
+    h3{
+        text-align: center;
+    }
+    label{
+        color:gray;
+        font-size: 90%;
+    }
+    .btn{
+        background-color:blue;
+        color:white;
+        width:50%;
+        margin-left: 24%;
+        border-radius: 30px;
+    }
+    nav{
+      padding:2%;
+
+    }
+    .left{
+      width:100%;
+      text-align: right;
+    }
+    .right{
+      justify-items: right;
+      
+      align-items:right;
+    }
+  
+</style>
+<body id="body">
+  <nav class="navbar navbar-default">
+  
+    <span class="left">Health Care System<i  style="font-size: 90%;margin:1%;" class="fa fa-angle-down"></i> <i  style="margin-left: 2%;" class="fa fa-bars"></i></span>
+  
+  </nav>
+      <div class="container">
+        <form action="{{'forgetpassuser'}}" method='POST'>
+            <label style="color:red">{{msg}}</label>
+
+            <div class="form-outlone mb-4">
+              <label>Enter secret key s</label>          
+              <input type="text" name="sc" class="form-control" placeholder="Secret Key"/>
+            </div>
+            <div class="form-outlone mb-4">
+                <label>Password</label>                
+                <input type="password" name="password" class="form-control" placeholder="Password"/>
+            </div>
+            <button class="btn" name="submit">Confirm</button><br>
+            
+          </form>
+                
+            </div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fp.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+
+nav {
+  top: 0;
+  position: fixed;
+  z-index: 100;
+}
+
+h3 {
+  font-size: 2rem;
+  color: purple
+}
+
+</style>
+<body bgcolor="white">
+<nav class="navbar navbar-expand-lg navbar-light bg-light vw-100">
+  <a class="navbar-brand" href="#">HealthCare System</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('firstpage')}}"
+          >Profile <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('bookapp')}}"
+          >Book Appointment </a>
+      </li>
+
+      {% if session['addeddetails'] %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('editdetails')}}"
+          >Edit Details </a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('adddetails')}}"
+          >Add Details </a>
+      </li>
+      {% endif %}
+      </ul>
+        </div>
+        <h3 class="mr-1">{{ username }}</h3>&nbsp;&nbsp;
+        <a href="{{url_for('logout')}}"><button class="btn btn-primary" >Logout</button></a>
+      </nav>
+
+<div class="container">
+  <div class="row" style="margin-top:3%">
+      <br>
+      <br>
+      <h3>{{name}}</h3><br><br>
+
+      <hr>
+      </div>
+      <div class="row">
+          <div class="col-12 col-sm-6"> <b>Blood Group: </b> &nbsp; &nbsp; &nbsp; {{bg}}</div>
+          <div class="col-12 col-sm-6"> <b>Height:</b>&nbsp; &nbsp; &nbsp; {{h}}</div>
+      </div><br>
+      <div class="row">
+          <div class="col-12 col-sm-6"> <b>Allergy:</b>&nbsp; &nbsp; &nbsp; {{a}}</div>
+          <div class="col-12 col-sm-6"> <b>Weight:</b>&nbsp; &nbsp; &nbsp;{{w}}</div>
+      </div><br>
+      <div class="row">
+          <div class="col-12 col-sm-6"> <b>Disese:</b>&nbsp; &nbsp; &nbsp; {{d}}</div>
+          <div class="col-12 col-sm-6"> <b>Emergency Contact:</b>&nbsp; &nbsp; &nbsp; {{e}}</div>
+          
+      </div><br>
+      <br>
+{% if not session['addeddetails'] %}
+
+<a href="adddetails"><button class="btn btn-primary">Add details</button></a>
+{% endif %}
+
+
+<hr>
+<h3>My appointments</h3><br><br>
+{% for x in l%}
+<div class="row">
+  <div class="col-12 col-sm-6">
+  <b>Date:</b> &nbsp;{{x[0]}}</div>
+  
+  <div class="col-12 col-sm-6">
+<b>Status:</b> &nbsp;{{x[1]}}</div>
+</div>
+<br><hr>
+{% endfor %}
+
+
+</div>
+</body>

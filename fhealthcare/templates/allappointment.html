@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fp.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+
+nav {
+  top: 0;
+  position: fixed;
+  z-index: 100;
+}
+
+h3 {
+  font-size: 2rem;
+  color: purple
+}
+.alert-warning{
+  width:80%;
+  margin-left:10%;
+  background-color: aquamarine;
+  padding:1%
+
+}
+
+</style>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <script>
+      var messages = {{ messages | safe }};
+      for (var i=0; i<messages.length; i++) {
+        alert(messages[i]);
+      }
+    </script>
+  {% endif %}
+{% endwith %}
+
+
+<body bgcolor="white">
+<nav class="navbar navbar-expand-lg navbar-light bg-light vw-100">
+  <a class="navbar-brand" href="#">HealthCare System</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+     
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('allappointment')}}"
+            >Confirm Appointment </a>
+        </li>
+        </ul>
+  </div>
+  <h3 class="mr-1">{{ username }}</h3>
+</nav>
+
+<div class="container">
+  
+
+
+<hr>
+<h3>All appointments</h3><br><br>
+<br>
+{% for x in l %}
+<div class="row">
+  <div class="col-12 col-sm-2">
+  {{eno[0]}}
+  </div>
+  <div class="col-12 col-sm-2">
+{{x[2]}}</div>
+<div class="col-12 col-sm-2">
+
+  {% if x[3] == 1%}
+
+  <p>Confirmed</p>
+
+  {% elif x[3] == 2%}
+<p>Cancelled</p>
+
+{% elif x[3] == 3 %}
+<p>Conducted </p>
+{% endif %}</div>
+<div class="col-12 col-sm-6">
+<a href="{{url_for('clk', ida=x[0],t=1)}}"><button class="btn btn-success">Confirm</button></a>
+<a href="{{url_for('clk', ida=x[0],t=2)}}"><button class="btn btn-danger">Cancel</button></a>
+<a href="{{url_for('clk', ida=x[0],t=3)}}"><button class="btn btn-success">Conducted</button></a>
+<a href="{{url_for('consult', ida=x[0])}}"><button class="btn btn-success">Consult</button></a>
+</div>
+</div>
+<br><hr>
+{% endfor %}
+
+</div>
+</body>
