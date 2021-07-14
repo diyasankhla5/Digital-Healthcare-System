@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Mar 26 14:43:36 2021
-
-@author: DRASHTI
-"""
-
-
 import pymysql
 import hashlib
 import random
@@ -341,26 +333,7 @@ def bookapp():
         d.append(dt)
         wd.append(wd1)
         dc=[]
-        '''for j in d:
-            j.strftime('%A')
-        print(wd)
-        cur=mysql.connection.cursor()
-        cur.execute("SELECT slots from slots WHERE `date` LIKE %s",[dt])
-        q=cur.fetchone()
         
-        #print(q)
-        #print(len(q))
-        
-        if q==None:
-                cur.execute("Insert into slots (`date`) values(%s)",[dt])
-                p[dt]=10
-        
-        else:
-            x=list(q)
-            p[dt]=int(x[0])
-        
-    mysql.connection.commit()
-    cur.close()'''
     print(wd,"wd")
     for j in wd:
             if j=='Monday':
