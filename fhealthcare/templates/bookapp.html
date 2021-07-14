@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fp.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+
+nav {
+  top: 0;
+  position: fixed;
+  z-index: 100;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+</style>
+<body bgcolor="white">
+<nav class="navbar navbar-expand-lg navbar-light bg-light vw-100">
+  <a class="navbar-brand" href="#">HealthCare System</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('firstpage')}}"
+          >Profile <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('bookapp')}}"
+          >Book Appointment </a>
+      </li>
+      {% if session['addeddetails'] %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('editdetails')}}"
+          >Edit Details </a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('adddetails')}}"
+          >Add Details </a>
+      </li>
+      {% endif %}
+      </ul>
+  </div>
+  <h3 class="mr-1">{{ username }}</h3>&nbsp;&nbsp;
+  <a href="{{url_for('logout')}}"><button class="btn btn-primary" >Logout</button></a>
+</nav>
+
+<div class="container">
+
+  {% for j in range(l)%}
+  <div class="row">
+    <div class="col-12 col-sm-8">
+      <b>{{d[j]}}</b>
+      <br>
+      
+      <h4>
+      {{ dc[j] }}</h4>
+      <br>
+      <b>Timings:</b>
+      <br>
+      11:00 a.m. to 1:00 p.m
+
+    </div>
+    <div class="col-12 col-sm">
+      <a href= "{{url_for('book', jk=d[j],s=d[j])}}"><button class="btn btn-success">Book Appointment</button></td></a>
+            
+    </div> 
+<hr>
+
+  </div>
+  
+  <hr>
+  {% endfor %}
+  </div>
+</body>
