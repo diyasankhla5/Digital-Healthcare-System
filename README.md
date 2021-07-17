@@ -14,8 +14,8 @@ Frontend: HTML,CSS
 
 Requirment:
 ```
-* Setup MySQL
-* pip install flask
+Setup MySQL
+pip install flask
 ```
 
 
