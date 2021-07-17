@@ -25,4 +25,7 @@ pip install PyMySQL
 How to run on local: 
 * Clone the repository and config with your database name and password
 * Create Database by simply implementing code from health.sql file
+* Setup the Requirements
+* Run app.py file
+* Go to Local host to see the results
 
