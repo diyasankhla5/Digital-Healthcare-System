@@ -18,6 +18,7 @@ Setup MySQL
 Setup Python
 pip install flask
 pip install Flask-MySQL
+pip install PyMySQL
 ```
 
 
